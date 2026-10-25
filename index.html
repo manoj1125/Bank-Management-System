@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Teller Machine - Banking System</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- CONTAINER -->
+    <div class="app-container">
+
+        <!-- 1. LOGIN SCREEN -->
+        <div id="login-screen" class="screen active">
+            <div class="login-card">
+                <div class="bank-logo">
+                    <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <h1>WELCOME TO ATM</h1>
+                
+                <div class="input-group">
+                    <label for="card-no">Card No:</label>
+                    <input type="text" id="card-no" placeholder="Enter Card Number">
+                </div>
+
+                <div class="input-group">
+                    <label for="pin-no">PIN:</label>
+                    <input type="password" id="pin-no" placeholder="Enter 4-digit PIN">
+                </div>
+
+                <div class="button-row">
+                    <button id="btn-signin" class="btn dark">SIGN IN</button>
+                    <button id="btn-clear" class="btn dark">CLEAR</button>
+                </div>
+                <button id="btn-signup-main" class="btn dark full-width">SIGN UP</button>
+            </div>
+        </div>
+
+        <!-- 2. SIGN-UP PAGE 1: Personal Details -->
+        <div id="signup-screen-1" class="screen">
+            <div class="signup-card">
+                <h2>Application Form NO. <span id="form-no-display">1234</span></h2>
+                <h3>Page 1: Personal Details</h3>
+
+                <div class="form-grid">
+                    <div class="input-group"><label>Name:</label><input type="text" id="su-name"></div>
+                    <div class="input-group"><label>Father's Name:</label><input type="text" id="su-fname"></div>
+                    <div class="input-group"><label>Date of Birth:</label><input type="date" id="su-dob"></div>
+                    <div class="input-group">
+                        <label>Gender:</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="gender" value="Male"> Male</label>
+                            <label><input type="radio" name="gender" value="Female"> Female</label>
+                        </div>
+                    </div>
+                    <div class="input-group"><label>Email Address:</label><input type="email" id="su-email"></div>
+                    <div class="input-group">
+                        <label>Marital Status:</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="marital" value="Married"> Married</label>
+                            <label><input type="radio" name="marital" value="Unmarried"> Unmarried</label>
+                            <label><input type="radio" name="marital" value="Other"> Other</label>
+                        </div>
+                    </div>
+                    <div class="input-group"><label>Address:</label><input type="text" id="su-address"></div>
+                    <div class="input-group"><label>City:</label><input type="text" id="su-city"></div>
+                    <div class="input-group"><label>State:</label><input type="text" id="su-state"></div>
+                    <div class="input-group"><label>Pincode:</label><input type="text" id="su-pincode"></div>
+                    <div class="input-group"><label>Country:</label><input type="text" id="su-country"></div>
+                </div>
+                <button id="btn-su-next" class="btn dark right-align">Next</button>
+            </div>
+        </div>
+
+        <!-- 3. SIGN-UP PAGE 3: Account Details -->
+        <div id="signup-screen-3" class="screen">
+            <div class="signup-card">
+                <div class="header-flex">
+                    <h3>Page 3: Account Details</h3>
+                    <span>Form No: <b id="form-no-p3"></b></span>
+                </div>
+                
+                <label class="section-label">Account Type:</label>
+                <div class="radio-grid">
+                    <label><input type="radio" name="acc-type" value="Saving Account"> Saving Account</label>
+                    <label><input type="radio" name="acc-type" value="Fixed Deposit Account"> Fixed Deposit Account</label>
+                    <label><input type="radio" name="acc-type" value="Current Account"> Current Account</label>
+                    <label><input type="radio" name="acc-type" value="Recurring Deposit Account"> Recurring Deposit Account</label>
+                </div>
+
+                <div class="card-info-box">
+                    <p><strong>Card Number:</strong> <span id="gen-card-no">XXXX-XXXX-XXXX-4184</span></p>
+                    <p class="small-note">Your 16-Digit Card Details</p>
+                    <p><strong>PIN:</strong> <span id="gen-pin">XXXX</span></p>
+                    <p class="small-note">(4-digit password)</p>
+                </div>
+
+                <label class="section-label">Services Required:</label>
+                <div class="checkbox-grid">
+                    <label><input type="checkbox" value="ATM Card"> ATM CARD</label>
+                    <label><input type="checkbox" value="Internet Banking"> Internet Banking</label>
+                    <label><input type="checkbox" value="Mobile Banking"> Mobile Banking</label>
+                    <label><input type="checkbox" value="EMAIL Alerts"> EMAIL Alerts</label>
+                    <label><input type="checkbox" value="Cheque Book"> Cheque Book</label>
+                    <label><input type="checkbox" value="E-Statement"> E-Statement</label>
+                </div>
+
+                <div class="declaration">
+                    <label><input type="checkbox" id="declaration-check" checked> I hereby declare that the above-entered details are correct to the best of my knowledge.</label>
+                </div>
+
+                <div class="button-row">
+                    <button id="btn-submit-acc" class="btn dark">Submit</button>
+                    <button id="btn-cancel-acc" class="btn dark">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. ATM TRANSACTIONS / DASHBOARD SCREEN -->
+        <div id="atm-screen" class="screen">
+            <div class="atm-machine">
+                <div class="atm-screen-inner">
+                    <h2>TRANSACTION MENU</h2>
+                    <p class="atm-subtitle">Please Select Your Transaction</p>
+
+                    <div class="atm-buttons-layout">
+                        <div class="atm-col">
+                            <button class="atm-btn" id="trans-deposit">1. DEPOSIT</button>
+                            <button class="atm-btn" id="trans-cash">3. FAST CASH</button>
+                            <button class="atm-btn" id="trans-pin">5. PIN CHANGE</button>
+                        </div>
+                        <div class="atm-col">
+                            <button class="atm-btn" id="trans-withdraw">2. CASH WITHDRAWAL</button>
+                            <button class="atm-btn" id="trans-statement">4. MINI STATEMENT</button>
+                            <button class="atm-btn" id="trans-balance">6. BALANCE ENQUIRY</button>
+                        </div>
+                    </div>
+                    <button class="atm-btn exit-btn" id="trans-exit">7. EXIT</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. DEPOSIT SCREEN -->
+        <div id="deposit-screen" class="screen">
+            <div class="atm-machine">
+                <div class="atm-screen-inner">
+                    <h3>ENTER AMOUNT YOU WANT TO DEPOSIT</h3>
+                    <input type="number" id="deposit-amount" class="atm-input" placeholder="Amount in Rs">
+                    <div class="atm-action-row">
+                        <button id="btn-confirm-deposit" class="atm-btn">DEPOSIT</button>
+                        <button id="btn-back-deposit" class="atm-btn">BACK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. FAST CASH SCREEN -->
+        <div id="fastcash-screen" class="screen">
+            <div class="atm-machine">
+                <div class="atm-screen-inner">
+                    <h3>SELECT WITHDRAWAL AMOUNT</h3>
+                    <div class="fastcash-grid">
+                        <button class="atm-btn fc-btn" data-amt="100">Rs 100</button>
+                        <button class="atm-btn fc-btn" data-amt="500">Rs 500</button>
+                        <button class="atm-btn fc-btn" data-amt="1000">Rs 1000</button>
+                        <button class="atm-btn fc-btn" data-amt="2000">Rs 2000</button>
+                        <button class="atm-btn fc-btn" data-amt="5000">Rs 5000</button>
+                        <button class="atm-btn fc-btn" data-amt="10000">Rs 10000</button>
+                    </div>
+                    <button id="btn-back-fastcash" class="atm-btn exit-btn">BACK</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. MINI STATEMENT SCREEN -->
+        <div id="ministatement-screen" class="screen">
+            <div class="statement-card">
+                <h3>Indian Bank</h3>
+                <p id="ms-cardno">Card Number: ----</p>
+                <hr>
+                <div id="ms-transactions-list" class="transaction-list">
+                    <!-- Dynamic statement entries inserted here -->
+                </div>
+                <hr>
+                <h4 id="ms-total-balance">Your total Balance is Rs 0</h4>
+                <button id="btn-exit-statement" class="btn dark">Exit</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Popup Notification Modal -->
+    <div id="custom-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <p id="modal-message">Notification Message</p>
+            <button id="modal-ok" class="btn dark">OK</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
